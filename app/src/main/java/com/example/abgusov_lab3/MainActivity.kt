@@ -2,6 +2,8 @@ package com.example.abgusov_lab3
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -28,6 +30,8 @@ class MainActivity : AppCompatActivity() {
 
             val latinLettersCount = countLatinLetters(inputText)
             resultTextView.text = "Найдено латинских букв: $latinLettersCount"
+
+            hideKeyboard()
         }
     }
 
@@ -43,5 +47,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         return count
+    }
+
+    //Функция для скрытия клавиатуры после нажатия кнопки
+    private fun hideKeyboard() {
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
     }
 }
