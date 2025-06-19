@@ -14,6 +14,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val rootLayout = findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.root)
+        rootLayout.setOnClickListener {
+            hideKeyboard()
+        }
+
         // Инициализация UI элементов
         val inputEditText = findViewById<EditText>(R.id.inputEditText)
         val analyzeButton = findViewById<Button>(R.id.analyzeButton)
